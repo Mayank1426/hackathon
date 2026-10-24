@@ -33,11 +33,11 @@ export default function ParticleCanvas() {
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(ambientLight);
 
-    const amberLight = new THREE.PointLight(0xffd83d, 3.5, 20);
+    const amberLight = new THREE.PointLight(0xffca29, 3.5, 20);
     amberLight.position.set(4, 3, 4);
     scene.add(amberLight);
 
-    const purpleLight = new THREE.PointLight(0x7928ca, 3.0, 20);
+    const purpleLight = new THREE.PointLight(0x452080, 3.8, 20);
     purpleLight.position.set(-4, -3, 3);
     scene.add(purpleLight);
 
@@ -51,9 +51,9 @@ export default function ParticleCanvas() {
     const icoGeo = new THREE.IcosahedronGeometry(1.65, 1);
     const icoEdges = new THREE.EdgesGeometry(icoGeo);
     const icoMat = new THREE.LineBasicMaterial({
-      color: 0x7928ca,
+      color: 0x452080,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.4,
       blending: THREE.AdditiveBlending,
     });
     const icoWire = new THREE.LineSegments(icoEdges, icoMat);
@@ -64,10 +64,10 @@ export default function ParticleCanvas() {
     const icoPos = icoGeo.getAttribute('position');
     icoVertexGeo.setAttribute('position', icoPos);
     const icoVertexMat = new THREE.PointsMaterial({
-      color: 0xffd83d,
+      color: 0xffca29,
       size: 0.08,
       transparent: true,
-      opacity: 0.85,
+      opacity: 0.9,
       blending: THREE.AdditiveBlending,
     });
     const icoPoints = new THREE.Points(icoVertexGeo, icoVertexMat);
@@ -76,11 +76,11 @@ export default function ParticleCanvas() {
     // 3. Inner Floating Diamond / Octahedron Core
     const coreGeo = new THREE.OctahedronGeometry(0.85, 0);
     const coreMat = new THREE.MeshStandardMaterial({
-      color: 0xffd83d,
-      roughness: 0.3,
+      color: 0xffca29,
+      roughness: 0.25,
       metalness: 0.8,
       transparent: true,
-      opacity: 0.55,
+      opacity: 0.65,
       wireframe: false,
     });
     const coreMesh = new THREE.Mesh(coreGeo, coreMat);
@@ -89,10 +89,10 @@ export default function ParticleCanvas() {
     // Core wireframe outline
     const coreEdges = new THREE.EdgesGeometry(coreGeo);
     const coreWireMat = new THREE.LineBasicMaterial({
-      color: 0xfff089,
+      color: 0xffe082,
       linewidth: 1.5,
       transparent: true,
-      opacity: 0.8,
+      opacity: 0.85,
     });
     const coreWire = new THREE.LineSegments(coreEdges, coreWireMat);
     anchor3D.add(coreWire);
@@ -100,9 +100,9 @@ export default function ParticleCanvas() {
     // 4. Orbital 3D Torus Rings
     const ring1Geo = new THREE.TorusGeometry(2.2, 0.015, 16, 80);
     const ring1Mat = new THREE.MeshBasicMaterial({
-      color: 0xa855f7,
+      color: 0x5e2eb0,
       transparent: true,
-      opacity: 0.4,
+      opacity: 0.45,
       blending: THREE.AdditiveBlending,
     });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
@@ -112,9 +112,9 @@ export default function ParticleCanvas() {
 
     const ring2Geo = new THREE.TorusGeometry(2.6, 0.012, 16, 90);
     const ring2Mat = new THREE.MeshBasicMaterial({
-      color: 0xf59e0b,
+      color: 0xffca29,
       transparent: true,
-      opacity: 0.32,
+      opacity: 0.35,
       blending: THREE.AdditiveBlending,
     });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
@@ -128,11 +128,11 @@ export default function ParticleCanvas() {
     const pColors = new Float32Array(particleCount * 3);
 
     const palette = [
-      new THREE.Color('#FFD83D'), // DKoder yellow
-      new THREE.Color('#7928CA'), // DKoder purple
-      new THREE.Color('#9333EA'), // Violet
-      new THREE.Color('#F59E0B'), // Warm amber
-      new THREE.Color('#C084FC'), // Lilac
+      new THREE.Color('#FFCA29'), // DKoder gold
+      new THREE.Color('#452080'), // DKoder royal purple
+      new THREE.Color('#5E2EB0'), // Elegant violet tint
+      new THREE.Color('#FFD54F'), // Warm amber highlight
+      new THREE.Color('#8C52E5'), // Royal lilac
     ];
 
     for (let i = 0; i < particleCount; i++) {

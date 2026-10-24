@@ -10,16 +10,16 @@ export default {
       colors: {
         dk: {
           yellow: {
-            DEFAULT: '#FFD83D',
-            light: '#FFE566',
-            dark: '#E5BE22',
-            glow: 'rgba(255, 216, 61, 0.25)',
+            DEFAULT: '#FFCA29',
+            light: '#FFD768',
+            dark: '#E5AC0E',
+            glow: 'rgba(255, 202, 41, 0.3)',
           },
           purple: {
-            DEFAULT: '#7928CA',
-            light: '#9E5CF6',
-            dark: '#571B96',
-            glow: 'rgba(121, 40, 202, 0.25)',
+            DEFAULT: '#452080',
+            light: '#5E2EB0',
+            dark: '#2A1054',
+            glow: 'rgba(69, 32, 128, 0.35)',
           },
           dark: {
             950: '#060709',
@@ -60,12 +60,12 @@ export default {
         }
       },
       boxShadow: {
-        'yellow-glow': '0 0 25px -5px rgba(255, 216, 61, 0.4)',
-        'purple-glow': '0 0 30px -5px rgba(121, 40, 202, 0.45)',
+        'yellow-glow': '0 0 25px -4px rgba(255, 202, 41, 0.45)',
+        'purple-glow': '0 0 30px -4px rgba(69, 32, 128, 0.5)',
         'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
         'card-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.7)',
-        'neon-yellow': '0 0 20px rgba(255, 216, 61, 0.6), 0 0 40px rgba(255, 216, 61, 0.3)',
-        'neon-purple': '0 0 20px rgba(121, 40, 202, 0.6), 0 0 40px rgba(121, 40, 202, 0.3)',
+        'neon-yellow': '0 0 20px rgba(255, 202, 41, 0.6), 0 0 40px rgba(255, 202, 41, 0.3)',
+        'neon-purple': '0 0 20px rgba(69, 32, 128, 0.6), 0 0 40px rgba(69, 32, 128, 0.3)',
       }
     },
   },

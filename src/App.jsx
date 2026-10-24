@@ -27,6 +27,9 @@ import CommandPalette from './components/CommandPalette';
 import FloatingNav from './components/FloatingNav';
 import AiChatbot from './components/AiChatbot';
 
+// ─── NEW INNOVATIVE UI/UX EFFECTS ───
+import AuroraBackground from './components/AuroraBackground';
+
 export default function App() {
   const [toastMessage, setToastMessage] = useState(null);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
@@ -45,7 +48,14 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-transparent text-slate-900 flex flex-col font-sans selection:bg-dk-yellow selection:text-slate-900">
+    <div className="min-h-screen bg-transparent text-slate-900 flex flex-col font-sans selection:bg-dk-yellow selection:text-slate-900 noise-grain">
+      {/* ═══ INNOVATIVE GLOBAL EFFECTS LAYER ═══ */}
+
+      {/* Aurora Color-Shifting Background — reacts to scroll position */}
+      <AuroraBackground />
+
+
+
       {/* Global Scroll Progress Bar at very top */}
       <ScrollProgressBar />
 
@@ -59,7 +69,7 @@ export default function App() {
         onOpenCommandPalette={() => setCmdPaletteOpen(true)}
       />
 
-      <main className="flex-1">
+      <main className="flex-1 relative z-[1]">
         {/* 1. Hero with Interactive AI Guide scene & Typewriter headline */}
         <Hero
           onOpenAiRoadmap={() => showToast('AI Roadmap generator triggered!')}

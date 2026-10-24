@@ -21,9 +21,16 @@ export default function ScrollProgressBar() {
       className="fixed top-0 left-0 right-0 h-[3.5px] z-[200] pointer-events-none"
       aria-hidden="true"
     >
+      {/* ★ Enhanced shimmer gradient progress bar */}
       <div 
-        className="h-full bg-gradient-to-r from-amber-400 via-purple-600 to-amber-500 transition-all duration-150 ease-out shadow-xs"
-        style={{ width: `${scrollProgress}%` }}
+        className="h-full transition-all duration-150 ease-out"
+        style={{
+          width: `${scrollProgress}%`,
+          background: 'linear-gradient(90deg, #FFCA29, #452080, #5E2EB0, #FFD54F, #FFCA29)',
+          backgroundSize: '200% 100%',
+          animation: 'wave-underline 3s linear infinite',
+          boxShadow: scrollProgress > 5 ? '0 0 10px rgba(69,32,128,0.45), 0 0 20px rgba(255,202,41,0.3)' : 'none',
+        }}
       />
     </div>
   );

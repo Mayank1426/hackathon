@@ -80,17 +80,17 @@ export default function PlacementCalculator({ onToast }) {
   const strokeOffset = circumference - (data.score / 100) * circumference;
 
   return (
-    <section className="py-16 md:py-24 border-b border-amber-200/50 relative bg-gradient-to-b from-[#FAF5FF] via-white to-[#FEFCE8]/50 overflow-hidden" id="calculator">
+    <section className="py-16 md:py-24 border-b border-[#FFCA29]/25 relative bg-gradient-to-b from-[#FAF6FE] via-white to-[#FFFDF2]/60 overflow-hidden" id="calculator">
       {/* Soft Ambient Light Glows */}
-      <div className="absolute top-1/3 left-10 w-80 h-80 bg-amber-200/30 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-200/30 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/3 left-10 w-80 h-80 bg-[#FFCA29]/15 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-[#452080]/12 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Heading */}
         <ScrollReveal animation="fade-up" className="text-center max-w-2xl mx-auto mb-12">
-          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-amber-700 uppercase tracking-widest mb-3 bg-amber-100/90 px-3.5 py-1.5 rounded-full border border-amber-300/60 shadow-xs">
-            <Calculator className="w-3.5 h-3.5 text-amber-600" />
+          <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-amber-800 uppercase tracking-widest mb-3 bg-[#FFCA29]/20 px-3.5 py-1.5 rounded-full border border-[#FFCA29]/50 shadow-xs">
+            <Calculator className="w-3.5 h-3.5 text-amber-700" />
             INTERACTIVE PLACEMENT READINESS SCORE
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
@@ -261,8 +261,8 @@ export default function PlacementCalculator({ onToast }) {
                       />
                       <defs>
                         <linearGradient id="calc-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                          <stop offset="0%" stopColor="#F59E0B" />
-                          <stop offset="50%" stopColor="#7928CA" />
+                          <stop offset="0%" stopColor="#FFCA29" />
+                          <stop offset="50%" stopColor="#452080" />
                           <stop offset="100%" stopColor="#10B981" />
                         </linearGradient>
                       </defs>

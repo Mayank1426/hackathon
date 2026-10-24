@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ArrowUpRight, Compass, Code, Trophy, Building2, ShieldCheck, CreditCard, Search, Calculator } from 'lucide-react';
-import HeaderLogo3D from './HeaderLogo3D';
+import GlitchText from './GlitchText';
 
 export default function Navbar({ onOpenLogin, onToast, onOpenCommandPalette }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -59,24 +59,28 @@ export default function Navbar({ onOpenLogin, onToast, onOpenCommandPalette }) {
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
+      className={`sticky top-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-white/90 backdrop-blur-md border-b border-purple-100 py-2.5 shadow-sm'
-          : 'bg-[#FAF5FF]/85 backdrop-blur-md border-b border-purple-100/50 py-3.5'
+          ? 'glass-premium border-b border-[#452080]/15 py-2.5 shadow-sm'
+          : 'bg-[#FAF6FE]/90 backdrop-blur-md border-b border-[#452080]/10 py-3.5'
       }`}
     >
       {/* Scroll progress bar */}
       <div
-        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-amber-400 via-purple-600 to-purple-800 transition-all duration-150"
+        className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-[#FFCA29] via-[#452080] to-[#5E2EB0] transition-all duration-150"
         style={{ width: `${scrollPct}%` }}
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand with Interactive 3D Emblem */}
+        {/* Brand with Official 3D Mascot Logo */}
         <a href="#home" className="group flex items-center gap-2.5 no-underline">
-          <HeaderLogo3D />
+          <img
+            src="/dkoder-logo.png"
+            alt="DKoder Logo"
+            className="w-10 h-10 object-contain filter drop-shadow-[0_2px_8px_rgba(255,202,41,0.45)] group-hover:scale-110 group-hover:-rotate-6 transition-all duration-300"
+          />
           <span className="font-extrabold text-xl tracking-tight text-slate-900 flex items-center">
-            dkoder<span className="text-amber-500 animate-pulse text-2xl leading-none">.</span>
+            <GlitchText glitchOnHover>dkoder</GlitchText><span className="text-[#FFCA29] animate-pulse text-2xl leading-none">.</span>
           </span>
         </a>
 
@@ -88,9 +92,9 @@ export default function Navbar({ onOpenLogin, onToast, onOpenCommandPalette }) {
               <a
                 key={link.label}
                 href={link.href}
-                className={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-lg transition-all ${
+                className={`text-xs font-semibold uppercase tracking-wider px-3 py-1.5 rounded-lg transition-all hover-gradient-text ${
                   isActive
-                    ? 'bg-purple-50 text-purple-700 border border-purple-200'
+                    ? 'bg-[#452080]/10 text-[#452080] border border-[#452080]/20 wave-underline'
                     : 'text-slate-600 hover:text-slate-950 hover:bg-slate-100'
                 }`}
               >
@@ -105,7 +109,7 @@ export default function Navbar({ onOpenLogin, onToast, onOpenCommandPalette }) {
           {/* Command Palette Trigger */}
           <button
             onClick={onOpenCommandPalette}
-            className="flex items-center gap-2 text-xs font-mono text-slate-500 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg hover:border-purple-300 hover:bg-purple-50 hover:text-purple-700 transition-all shadow-sm"
+            className="flex items-center gap-2 text-xs font-mono text-slate-500 bg-slate-50 border border-slate-200 px-3 py-2 rounded-lg hover:border-[#452080]/40 hover:bg-purple-50 hover:text-[#452080] transition-all shadow-sm"
             title="Open command palette (Ctrl+K)"
           >
             <Search className="w-3.5 h-3.5" />
@@ -121,10 +125,10 @@ export default function Navbar({ onOpenLogin, onToast, onOpenCommandPalette }) {
           </button>
           <a
             href="#destination"
-            className="text-xs font-bold uppercase tracking-wider bg-dk-purple hover:bg-purple-700 text-white px-4 py-2 rounded-lg shadow-sm hover:shadow-purple-glow transition-all flex items-center gap-1.5 active:scale-95"
+            className="text-xs font-bold uppercase tracking-wider bg-[#452080] hover:bg-[#5E2EB0] text-white px-4 py-2 rounded-lg shadow-sm hover:shadow-purple-glow transition-all flex items-center gap-1.5 active:scale-95 breathing-glow"
           >
             Find your path
-            <ArrowUpRight className="w-3.5 h-3.5" />
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#FFCA29]" />
           </a>
         </div>
 

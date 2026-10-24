@@ -4,8 +4,8 @@
 
 @layer base {
   :root {
-    --dk-yellow: #FFD83D;
-    --dk-purple: #7928CA;
+    --dk-yellow: #FFCA29;
+    --dk-purple: #452080;
   }
   
   html {
@@ -14,13 +14,14 @@
   }
 
   body {
-    background-color: #FAF5FF;
+    background-color: #FAF6FE;
     background-image: 
-      radial-gradient(circle at 10% 12%, rgba(254, 240, 138, 0.45) 0%, transparent 45%),
-      radial-gradient(circle at 90% 18%, rgba(216, 180, 254, 0.45) 0%, transparent 45%),
-      radial-gradient(circle at 20% 55%, rgba(254, 243, 199, 0.35) 0%, transparent 40%),
-      radial-gradient(circle at 85% 75%, rgba(233, 213, 255, 0.45) 0%, transparent 45%),
-      linear-gradient(180deg, #FEFCE8 0%, #FAF5FF 30%, #F5EEFD 70%, #FEF9E7 100%);
+      radial-gradient(ellipse 90% 50% at 50% -10%, rgba(69, 32, 128, 0.14), transparent 70%),
+      radial-gradient(circle at 12% 18%, rgba(255, 202, 41, 0.16) 0%, transparent 45%),
+      radial-gradient(circle at 88% 25%, rgba(69, 32, 128, 0.13) 0%, transparent 45%),
+      radial-gradient(circle at 16% 58%, rgba(255, 202, 41, 0.12) 0%, transparent 45%),
+      radial-gradient(circle at 84% 72%, rgba(69, 32, 128, 0.11) 0%, transparent 50%),
+      linear-gradient(180deg, #FDFBFF 0%, #FAF6FE 25%, #F6EEFD 60%, #FEF9EE 100%);
     background-attachment: fixed;
     color: #0F172A;
     overflow-x: hidden;
@@ -39,7 +40,7 @@
     border-radius: 4px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #EAB308;
+    background: #FFCA29;
   }
 }
 
@@ -58,8 +59,8 @@
   }
   .glass-card-hover:hover {
     transform: translateY(-4px);
-    border-color: rgba(234, 179, 8, 0.5);
-    box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.08), 0 0 20px -5px rgba(234, 179, 8, 0.2);
+    border-color: rgba(255, 202, 41, 0.6);
+    box-shadow: 0 20px 30px -10px rgba(15, 23, 42, 0.08), 0 0 20px -5px rgba(255, 202, 41, 0.25);
   }
 
   .glow-border {
@@ -71,7 +72,7 @@
     inset: -1px;
     border-radius: inherit;
     padding: 1px;
-    background: linear-gradient(135deg, rgba(234, 179, 8, 0.5), rgba(121, 40, 202, 0.3), transparent 70%);
+    background: linear-gradient(135deg, rgba(255, 202, 41, 0.55), rgba(69, 32, 128, 0.35), transparent 70%);
     -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
     -webkit-mask-composite: xor;
     mask-composite: exclude;
@@ -79,13 +80,13 @@
   }
 
   .text-gradient-yellow {
-    background: linear-gradient(135deg, #B45309 0%, #D97706 40%, #EAB308 100%);
+    background: linear-gradient(135deg, #B38300 0%, #E5AC0E 40%, #FFCA29 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
 
   .text-gradient-purple {
-    background: linear-gradient(135deg, #4C1D95 0%, #6D28D9 50%, #7928CA 100%);
+    background: linear-gradient(135deg, #2A1054 0%, #452080 50%, #6B3FB5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -445,5 +446,471 @@
   .marquee-fade-mask {
     mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 1) 93%, transparent 100%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 1) 93%, transparent 100%);
+  }
+
+  /* ══════════════════════════════════════════════
+     ── INNOVATIVE UI/UX EFFECT LIBRARY ──
+     ══════════════════════════════════════════════ */
+
+  /* ── 1. GLITCH TEXT EFFECT ── */
+  .glitch-text-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+  .glitch-text-wrapper.is-glitching::before,
+  .glitch-text-wrapper.is-glitching::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+  .glitch-text-wrapper.is-glitching::before {
+    color: #ff00c8;
+    animation: glitch-shift-1 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+    clip-path: polygon(0 0, 100% 0, 100% 35%, 0 35%);
+    opacity: 0.8;
+  }
+  .glitch-text-wrapper.is-glitching::after {
+    color: #00fff9;
+    animation: glitch-shift-2 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite reverse;
+    clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+    opacity: 0.8;
+  }
+  @keyframes glitch-shift-1 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-3px, 2px); }
+    40% { transform: translate(3px, -1px); }
+    60% { transform: translate(-2px, -2px); }
+    80% { transform: translate(2px, 1px); }
+  }
+  @keyframes glitch-shift-2 {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(3px, -2px); }
+    40% { transform: translate(-3px, 1px); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(-2px, -1px); }
+  }
+
+  /* ── 2. FILM GRAIN NOISE OVERLAY ── */
+  .noise-grain::after {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+    width: 200%;
+    height: 200%;
+    pointer-events: none;
+    z-index: 9996;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    animation: grain-drift 0.8s steps(3) infinite;
+  }
+  @keyframes grain-drift {
+    0%   { transform: translate(0, 0); }
+    33%  { transform: translate(-5%, -5%); }
+    66%  { transform: translate(3%, 3%); }
+    100% { transform: translate(0, 0); }
+  }
+
+  /* ── 3. HOLOGRAPHIC SHIMMER EFFECT ── */
+  @keyframes holographic-shimmer {
+    0%   { background-position: 0% 50%; filter: hue-rotate(0deg); }
+    50%  { background-position: 100% 50%; filter: hue-rotate(25deg); }
+    100% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+  }
+  .holographic {
+    background: linear-gradient(
+      135deg,
+      #452080 0%,
+      #FFCA29 18%,
+      #5E2EB0 36%,
+      #FFD54F 54%,
+      #8C52E5 72%,
+      #FFCA29 88%,
+      #452080 100%
+    );
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographic-shimmer 6s ease infinite;
+  }
+
+  /* ── 4. RAINBOW BORDER ANIMATION ── */
+  @keyframes rainbow-border {
+    0%   { border-color: #452080; box-shadow: 0 0 15px rgba(69,32,128,0.35); }
+    25%  { border-color: #FFCA29; box-shadow: 0 0 15px rgba(255,202,41,0.35); }
+    50%  { border-color: #FFD54F; box-shadow: 0 0 15px rgba(255,213,79,0.35); }
+    75%  { border-color: #5E2EB0; box-shadow: 0 0 15px rgba(94,46,176,0.35); }
+    100% { border-color: #452080; box-shadow: 0 0 15px rgba(69,32,128,0.35); }
+  }
+  .rainbow-border {
+    border: 2px solid;
+    animation: rainbow-border 4s linear infinite;
+  }
+
+  /* ── 5. BREATHING GLOW ── */
+  @keyframes breathing-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(69,32,128,0.25), 0 0 20px rgba(69,32,128,0.12);
+    }
+    50% {
+      box-shadow: 0 0 22px rgba(69,32,128,0.45), 0 0 65px rgba(69,32,128,0.25), 0 0 100px rgba(255,202,41,0.18);
+    }
+  }
+  .breathing-glow {
+    animation: breathing-glow 3s ease-in-out infinite;
+  }
+
+  /* ── 6. NEON TEXT SHADOWS ── */
+  .neon-purple {
+    text-shadow:
+      0 0 7px #452080,
+      0 0 12px #5E2EB0,
+      0 0 22px #452080,
+      0 0 42px #45208066;
+  }
+  .neon-gold {
+    text-shadow:
+      0 0 7px #FFCA29,
+      0 0 12px #FFD54F,
+      0 0 22px #FFCA29,
+      0 0 42px #FFCA2966;
+  }
+
+  /* ── 7. TYPING CURSOR BLINK ── */
+  @keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  .typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: #452080;
+    margin-left: 2px;
+    animation: cursor-blink 0.8s step-end infinite;
+    vertical-align: text-bottom;
+    border-radius: 1px;
+  }
+
+  /* ── 8. MORPHING GRADIENT BACKGROUND ── */
+  @keyframes morph-gradient {
+    0%   { background-position: 0% 50%; }
+    25%  { background-position: 100% 0%; }
+    50%  { background-position: 100% 100%; }
+    75%  { background-position: 0% 100%; }
+    100% { background-position: 0% 50%; }
+  }
+  .morph-gradient-bg {
+    background: linear-gradient(
+      -45deg,
+      #FAF6FE,
+      #FFF9E6,
+      #F5EEFD,
+      #FFF5D6,
+      #EFE8FC,
+      #FFFDE8
+    );
+    background-size: 400% 400%;
+    animation: morph-gradient 15s ease infinite;
+  }
+
+  /* ── 9. STAGGERED REVEAL ANIMATIONS ── */
+  @keyframes stagger-rise {
+    from {
+      opacity: 0;
+      transform: translateY(30px) scale(0.95);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0);
+    }
+  }
+  .stagger-rise {
+    animation: stagger-rise 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+  .stagger-rise:nth-child(1) { animation-delay: 0ms; }
+  .stagger-rise:nth-child(2) { animation-delay: 80ms; }
+  .stagger-rise:nth-child(3) { animation-delay: 160ms; }
+  .stagger-rise:nth-child(4) { animation-delay: 240ms; }
+  .stagger-rise:nth-child(5) { animation-delay: 320ms; }
+  .stagger-rise:nth-child(6) { animation-delay: 400ms; }
+  .stagger-rise:nth-child(7) { animation-delay: 480ms; }
+  .stagger-rise:nth-child(8) { animation-delay: 560ms; }
+  .stagger-rise:nth-child(9) { animation-delay: 640ms; }
+  .stagger-rise:nth-child(10) { animation-delay: 720ms; }
+
+  /* ── 10. 3D CARD FLIP ── */
+  .flip-card {
+    perspective: 1000px;
+  }
+  .flip-card-inner {
+    transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front, .flip-card-back {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+    position: absolute;
+    inset: 0;
+  }
+
+  /* ── 11. LIQUID FILL ON HOVER ── */
+  .liquid-fill {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .liquid-fill::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 0%;
+    background: linear-gradient(180deg, rgba(69,32,128,0.08), rgba(69,32,128,0.18));
+    transition: height 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: -1;
+    border-radius: inherit;
+  }
+  .liquid-fill:hover::before {
+    height: 100%;
+  }
+
+  /* ── 12. SPOTLIGHT HOVER EFFECT ── */
+  .spotlight-hover {
+    position: relative;
+    overflow: hidden;
+  }
+  .spotlight-hover::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(circle, rgba(255,202,41,0.2) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+    top: var(--mouse-y, 50%);
+    left: var(--mouse-x, 50%);
+  }
+  .spotlight-hover:hover::after {
+    opacity: 1;
+  }
+
+  /* ── 13. WAVE UNDERLINE ── */
+  @keyframes wave-underline {
+    0%   { background-position: 0 0; }
+    100% { background-position: 200% 0; }
+  }
+  .wave-underline {
+    background-image: linear-gradient(90deg, #452080, #FFCA29, #5E2EB0, #FFD54F, #452080);
+    background-size: 200% 3px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    padding-bottom: 4px;
+    animation: wave-underline 3s linear infinite;
+  }
+
+  /* ── 14. ELASTIC BOUNCE ── */
+  @keyframes elastic-bounce {
+    0%   { transform: scale(1); }
+    30%  { transform: scale(1.25); }
+    50%  { transform: scale(0.9); }
+    70%  { transform: scale(1.08); }
+    100% { transform: scale(1); }
+  }
+  .elastic-bounce:hover {
+    animation: elastic-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  /* ── 15. FOCUS RING GLOW ── */
+  .focus-glow:focus-visible {
+    outline: none;
+    box-shadow:
+      0 0 0 2px #FAF6FE,
+      0 0 0 4px #452080,
+      0 0 20px rgba(69,32,128,0.35);
+    transition: box-shadow 0.2s ease;
+  }
+
+  /* ── 16. GRADIENT TEXT ON HOVER ── */
+  .hover-gradient-text {
+    transition: all 0.3s ease;
+  }
+  .hover-gradient-text:hover {
+    background: linear-gradient(135deg, #7928CA, #FFD83D, #9333EA);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: holographic-shimmer 3s ease infinite;
+  }
+
+  /* ── 17. PARTICLE BORDER (CSS Only) ── */
+  @keyframes rotate-border {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  .rotating-border {
+    position: relative;
+    overflow: hidden;
+    border-radius: inherit;
+  }
+  .rotating-border::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    top: -50%;
+    left: -50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      #7928CA 10%,
+      transparent 20%,
+      #FFD83D 30%,
+      transparent 40%,
+      #9333EA 50%,
+      transparent 60%,
+      #F59E0B 70%,
+      transparent 80%,
+      #C084FC 90%,
+      transparent 100%
+    );
+    animation: rotate-border 4s linear infinite;
+    z-index: -1;
+  }
+  .rotating-border::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: inherit;
+    border-radius: inherit;
+    z-index: -1;
+  }
+
+  /* ── 18. PULSING DOT INDICATOR ── */
+  @keyframes dot-pulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50%      { transform: scale(1.8); opacity: 0.4; }
+  }
+  .dot-pulse {
+    position: relative;
+  }
+  .dot-pulse::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #10B981;
+    animation: dot-pulse 2s ease-in-out infinite;
+  }
+
+  /* ── 19. TYPEWRITER BLINKING CARET ── */
+  @keyframes typewriter-caret {
+    0%, 100% { border-right-color: #7928CA; }
+    50%      { border-right-color: transparent; }
+  }
+  .typewriter-caret {
+    border-right: 3px solid #7928CA;
+    animation: typewriter-caret 0.75s step-end infinite;
+    padding-right: 2px;
+  }
+
+  /* ── 20. SLIDE-IN FROM EDGES ── */
+  @keyframes slide-in-left {
+    from { opacity: 0; transform: translateX(-60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slide-in-right {
+    from { opacity: 0; transform: translateX(60px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes slide-in-bottom {
+    from { opacity: 0; transform: translateY(60px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .animate-slide-left  { animation: slide-in-left 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-slide-right { animation: slide-in-right 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .animate-slide-bottom { animation: slide-in-bottom 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+  /* ── 21. GLASSMORPHISM ENHANCED ── */
+  .glass-premium {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow:
+      0 8px 32px rgba(15, 23, 42, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  /* ── 22. TEXT STROKE OUTLINE ── */
+  .text-stroke {
+    -webkit-text-stroke: 1px #7928CA;
+    -webkit-text-fill-color: transparent;
+    transition: -webkit-text-fill-color 0.3s ease;
+  }
+  .text-stroke:hover {
+    -webkit-text-fill-color: #7928CA;
+  }
+
+  /* ── 23. SCALE-ROTATE ENTRANCE ── */
+  @keyframes scale-rotate-in {
+    from {
+      opacity: 0;
+      transform: scale(0.5) rotate(-10deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  .animate-scale-rotate {
+    animation: scale-rotate-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  }
+
+  /* ── 24. COLOR SHIFTING BACKGROUND ── */
+  @keyframes color-shift {
+    0%   { background-color: rgba(121,40,202,0.05); }
+    25%  { background-color: rgba(255,216,61,0.05); }
+    50%  { background-color: rgba(245,158,11,0.05); }
+    75%  { background-color: rgba(147,51,234,0.05); }
+    100% { background-color: rgba(121,40,202,0.05); }
+  }
+  .color-shift-bg {
+    animation: color-shift 8s ease-in-out infinite;
+  }
+
+  /* ── 25. MAGNETIC HOVER GROW ── */
+  .magnetic-grow {
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  .magnetic-grow:hover {
+    transform: scale(1.05) translateY(-2px);
+    box-shadow: 0 20px 40px -10px rgba(121,40,202,0.15);
+  }
+  .magnetic-grow:active {
+    transform: scale(0.98);
   }
 }

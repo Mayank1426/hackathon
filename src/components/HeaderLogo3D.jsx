@@ -29,11 +29,11 @@ export default function HeaderLogo3D({ size = 36, className = '' }) {
     const ambientLight = new THREE.AmbientLight(0xffffff, 1.2);
     scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0xffd83d, 2.5); // Amber gold
+    const dirLight1 = new THREE.DirectionalLight(0xffca29, 2.5); // Amber gold #FFCA29
     dirLight1.position.set(2, 3, 2);
     scene.add(dirLight1);
 
-    const dirLight2 = new THREE.DirectionalLight(0x7928ca, 2.0); // Violet purple
+    const dirLight2 = new THREE.DirectionalLight(0x452080, 2.6); // Royal purple #452080
     dirLight2.position.set(-2, -2, -2);
     scene.add(dirLight2);
 
@@ -44,11 +44,11 @@ export default function HeaderLogo3D({ size = 36, className = '' }) {
     // Outer 3D Rounded Cube / Gem
     const boxGeo = new THREE.BoxGeometry(1.35, 1.35, 1.35);
     const boxMat = new THREE.MeshStandardMaterial({
-      color: 0xffd83d,
-      roughness: 0.25,
-      metalness: 0.7,
+      color: 0xffca29,
+      roughness: 0.22,
+      metalness: 0.75,
       transparent: true,
-      opacity: 0.92,
+      opacity: 0.94,
     });
     const cube = new THREE.Mesh(boxGeo, boxMat);
     group.add(cube);
@@ -56,8 +56,8 @@ export default function HeaderLogo3D({ size = 36, className = '' }) {
     // Wireframe edges for tech feel
     const wireGeo = new THREE.EdgesGeometry(boxGeo);
     const wireMat = new THREE.LineBasicMaterial({
-      color: 0x4c1d95,
-      linewidth: 1.5,
+      color: 0x452080,
+      linewidth: 1.8,
     });
     const wireframe = new THREE.LineSegments(wireGeo, wireMat);
     group.add(wireframe);
@@ -65,7 +65,7 @@ export default function HeaderLogo3D({ size = 36, className = '' }) {
     // Inner glowing core octahedron
     const coreGeo = new THREE.OctahedronGeometry(0.65, 0);
     const coreMat = new THREE.MeshBasicMaterial({
-      color: 0x7928ca,
+      color: 0x5e2eb0,
       wireframe: true,
     });
     const core = new THREE.Mesh(coreGeo, coreMat);
