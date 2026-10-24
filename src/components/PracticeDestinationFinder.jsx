@@ -135,7 +135,7 @@ export default function PracticeDestinationFinder({ onToast }) {
   };
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-[#F8F9FC]" id="destination">
+    <section className="py-16 md:py-24 border-b border-purple-100/80 relative bg-gradient-to-b from-purple-50/50 via-amber-50/35 to-purple-50/40" id="destination">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading with Scroll Reveal */}
         <ScrollReveal animation="fade-up" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -146,7 +146,7 @@ export default function PracticeDestinationFinder({ onToast }) {
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
               A deep question bank.<br />
-              <span className="text-gradient-purple">Only a few for you.</span>
+              <span className="text-gradient-purple">Only the right ones for you.</span>
             </h2>
           </div>
           <p className="text-slate-600 text-sm md:text-base max-w-md font-medium">
@@ -211,15 +211,22 @@ export default function PracticeDestinationFinder({ onToast }) {
             </div>
 
             {/* Quick Targets (from PDF Page 4) */}
-            <div className="flex items-center gap-2 pt-1">
+            <div className="flex flex-wrap items-center gap-2 pt-1">
               <span className="text-xs font-mono text-slate-500 font-semibold uppercase">QUICK TARGETS:</span>
-              {['TCS', 'Microsoft', 'Infosys'].map((qComp) => (
+              {[
+                { name: 'TCS', badge: 'bg-red-50 text-red-700 border-red-200' },
+                { name: 'DIIPT', badge: 'bg-purple-50 text-purple-700 border-purple-200' },
+                { name: 'Infosys', badge: 'bg-blue-50 text-blue-700 border-blue-200' },
+                { name: 'Amazon', badge: 'bg-amber-50 text-amber-700 border-amber-200' },
+              ].map((q) => (
                 <button
-                  key={qComp}
-                  onClick={() => handleQuickTarget(qComp)}
-                  className="px-3 py-1 rounded-lg text-xs font-mono font-bold bg-slate-100 hover:bg-purple-50 text-slate-700 hover:text-purple-700 border border-slate-200 transition-colors"
+                  key={q.name}
+                  onClick={() => handleQuickTarget(q.name)}
+                  className={`px-3 py-1 rounded-lg text-xs font-mono font-bold hover:scale-105 border transition-all ${
+                    filters.company === q.name ? 'ring-2 ring-purple-500 font-black' : ''
+                  } ${q.badge}`}
                 >
-                  {qComp}
+                  {q.name}
                 </button>
               ))}
             </div>
@@ -234,14 +241,15 @@ export default function PracticeDestinationFinder({ onToast }) {
                   className="w-full bg-slate-50 border border-slate-200 focus:border-purple-600 focus:bg-white rounded-xl px-3 py-2.5 text-xs text-slate-900 focus:outline-none transition-colors"
                 >
                   <option value="Any company">Any company</option>
-                  <option value="TCS">TCS</option>
-                  <option value="Infosys">Infosys</option>
-                  <option value="Wipro">Wipro</option>
-                  <option value="Cognizant">Cognizant</option>
-                  <option value="Accenture">Accenture</option>
-                  <option value="Capgemini">Capgemini</option>
-                  <option value="Amazon">Amazon</option>
-                  <option value="Microsoft">Microsoft</option>
+                  <option value="TCS">TCS (NQT / Digital / Prime)</option>
+                  <option value="DIIPT">DIIPT (Institute Aptitude & Tech Round)</option>
+                  <option value="Infosys">Infosys (DSE & SP)</option>
+                  <option value="Wipro">Wipro (NLTH & Turbo)</option>
+                  <option value="Cognizant">Cognizant (GenC & Next)</option>
+                  <option value="Accenture">Accenture (ASE & FSE)</option>
+                  <option value="Capgemini">Capgemini (Exceller)</option>
+                  <option value="Amazon">Amazon (SDE-I & II)</option>
+                  <option value="Microsoft">Microsoft (SWE FTE)</option>
                   <option value="Persistent Systems">Persistent Systems</option>
                 </select>
               </div>

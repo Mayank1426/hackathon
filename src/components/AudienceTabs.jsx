@@ -14,7 +14,7 @@ export default function AudienceTabs({ onToast }) {
   };
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-[#F8F9FC]" id="institutions">
+    <section className="py-16 md:py-24 border-b border-amber-200/50 relative bg-gradient-to-b from-amber-50/40 via-purple-50/30 to-amber-50/20" id="institutions">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <ScrollReveal animation="fade-up" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">

@@ -3,9 +3,10 @@ import { pricingPlans } from '../data/mockData';
 import { Check, Sparkles, ArrowUpRight, ShieldCheck, Zap } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
+
 export default function PricingSection({ onOpenScholarship, onToast }) {
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-white" id="pricing">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 relative bg-white/70 backdrop-blur-sm" id="pricing">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading matching PDF Page 8 & 12 */}
         <ScrollReveal animation="fade-up" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">

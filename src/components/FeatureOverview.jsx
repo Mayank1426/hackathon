@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 
 export default function FeatureOverview() {
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-white">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 relative bg-white/70 backdrop-blur-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <ScrollReveal animation="fade-up" className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">

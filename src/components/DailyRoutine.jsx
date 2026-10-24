@@ -46,7 +46,7 @@ export default function DailyRoutine({ onToast }) {
   };
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-[#F8F9FC]">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 relative bg-gradient-to-b from-amber-50/40 via-purple-50/40 to-amber-50/30" id="daily">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Copy */}

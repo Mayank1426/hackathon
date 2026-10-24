@@ -1,7 +1,109 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { exploreCategories, exploreCards } from '../data/mockData';
 import { ArrowUpRight, Check, Code, Sparkles, Terminal, FileText, BarChart3, Users, Mic } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
+
+/* ── Animated Package Visual with Scroll Count-Up & Expanding Lines ── */
+function PackageProgressVisual() {
+  const containerRef = useRef(null);
+  const [inView, setInView] = useState(false);
+  const [val1, setVal1] = useState({ min: 0, max: 0 });
+  const [val2, setVal2] = useState({ min: 0, max: 0 });
+  const [val3, setVal3] = useState(0);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          const startTime = performance.now();
+          const duration = 1500; // 1.5s smooth count up
+
+          const tick = (now) => {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Cubic ease out
+            const ease = 1 - Math.pow(1 - progress, 3);
+
+            setVal1({
+              min: Math.floor(3 * ease),
+              max: Math.floor(7 * ease)
+            });
+            setVal2({
+              min: Math.floor(7 * ease),
+              max: Math.floor(12 * ease)
+            });
+            setVal3(Math.floor(12 * ease));
+
+            if (progress < 1) {
+              requestAnimationFrame(tick);
+            } else {
+              setVal1({ min: 3, max: 7 });
+              setVal2({ min: 7, max: 12 });
+              setVal3(12);
+            }
+          };
+
+          requestAnimationFrame(tick);
+        }
+      },
+      { threshold: 0.25 }
+    );
+
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div ref={containerRef} className="w-full space-y-3.5 py-1">
+      {/* Top Value Labels that start from 0 and count up */}
+      <div className="flex justify-between text-[11px] font-mono font-bold">
+        <span className="text-amber-600 transition-colors tabular-nums">
+          {val1.min}–{val1.max} LPA
+        </span>
+        <span className="text-slate-700 transition-colors tabular-nums">
+          {val2.min}–{val2.max} LPA
+        </span>
+        <strong className="text-purple-700 font-black transition-colors tabular-nums">
+          {val3}+ LPA
+        </strong>
+      </div>
+
+      {/* 3 Expanding Lines with Gradient Fills */}
+      <div className="space-y-2.5">
+        {/* Tier 1: 3-7 LPA Line */}
+        <div className="space-y-1">
+          <div className="h-2.5 rounded-full bg-slate-200/80 overflow-hidden relative">
+            <div 
+              className="h-full rounded-full bg-gradient-to-r from-amber-400 to-amber-500 shadow-xs transition-all duration-1000 ease-out"
+              style={{ width: inView ? '42%' : '0%' }}
+            />
+          </div>
+        </div>
+
+        {/* Tier 2: 7-12 LPA Line */}
+        <div className="space-y-1">
+          <div className="h-2.5 rounded-full bg-slate-200/80 overflow-hidden relative">
+            <div 
+              className="h-full rounded-full bg-gradient-to-r from-purple-500 to-indigo-500 shadow-xs transition-all duration-1200 ease-out"
+              style={{ width: inView ? '68%' : '0%', transitionDelay: '150ms' }}
+            />
+          </div>
+        </div>
+
+        {/* Tier 3: 12+ LPA Line */}
+        <div className="space-y-1">
+          <div className="h-2.5 rounded-full bg-slate-200/80 overflow-hidden relative">
+            <div 
+              className="h-full rounded-full bg-gradient-to-r from-emerald-500 to-teal-400 shadow-xs transition-all duration-1400 ease-out"
+              style={{ width: inView ? '94%' : '0%', transitionDelay: '300ms' }}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 export default function ExplorePractice({ onToast }) {
   const [activeTab, setActiveTab] = useState('all');
@@ -11,7 +113,7 @@ export default function ExplorePractice({ onToast }) {
     : exploreCards.filter(c => c.kind === activeTab);
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-[#F8F9FC]" id="explore">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 relative bg-gradient-to-b from-amber-50/40 via-purple-50/30 to-transparent" id="explore">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <ScrollReveal animation="fade-up" className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
@@ -64,7 +166,7 @@ export default function ExplorePractice({ onToast }) {
               delay={idx * 60}
               className="h-full"
             >
-              <article className="glass-card glass-card-hover rounded-2xl p-6 border border-slate-200/90 flex flex-col justify-between group relative overflow-hidden bg-white shadow-sm h-full">
+              <article className="glass-card glass-card-hover card-3d rounded-2xl p-6 border border-slate-200/90 flex flex-col justify-between group relative overflow-hidden bg-white shadow-sm h-full">
                 {/* Top Tag & Arrow */}
                 <div className="flex items-center justify-between pb-4 border-b border-slate-100">
                   <span className="text-[11px] font-mono font-bold tracking-wider text-purple-700 uppercase">
@@ -114,24 +216,7 @@ export default function ExplorePractice({ onToast }) {
                   )}
 
                   {card.kind === 'package' && (
-                    <div className="w-full space-y-2">
-                      <div className="flex justify-between text-[11px] font-mono text-slate-700 font-semibold">
-                        <span>3–7 LPA</span>
-                        <span>7–12 LPA</span>
-                        <strong className="text-purple-700">12+ LPA</strong>
-                      </div>
-                      <div className="space-y-1.5">
-                        <div className="h-2 rounded-full bg-slate-200 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-amber-400 to-amber-500 w-2/5"></div>
-                        </div>
-                        <div className="h-2 rounded-full bg-slate-200 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-purple-500 to-indigo-500 w-3/5"></div>
-                        </div>
-                        <div className="h-2 rounded-full bg-slate-200 overflow-hidden">
-                          <div className="h-full bg-gradient-to-r from-emerald-500 to-teal-400 w-5/6"></div>
-                        </div>
-                      </div>
-                    </div>
+                    <PackageProgressVisual />
                   )}
 
                   {card.tag === 'CODING PRACTICE' && (

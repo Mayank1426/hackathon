@@ -31,7 +31,7 @@ export default function SecurityConsole({ onToast }) {
   };
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-white" id="security">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 relative bg-white/70 backdrop-blur-sm" id="security">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Copy */}

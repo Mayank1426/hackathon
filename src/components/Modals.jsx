@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { X, Sparkles, Check, ArrowUpRight, Lock, Mail, Building2, Award } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import BrandLogo from './BrandLogo';
 
 export function LoginModal({ isOpen, onClose, onToast }) {
   const [email, setEmail] = useState('');
@@ -30,6 +31,9 @@ export function LoginModal({ isOpen, onClose, onToast }) {
         </button>
 
         <div>
+          <div className="mb-3">
+            <BrandLogo size="md" href={null} />
+          </div>
           <span className="text-xs font-mono font-bold text-amber-600 uppercase tracking-widest">
             AUTHENTICATION
           </span>

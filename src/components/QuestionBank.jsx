@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
 
+
 export default function QuestionBank({ onToast }) {
   // Filter states
   const [filterType, setFilterType] = useState('All companies');
@@ -110,7 +111,7 @@ export default function QuestionBank({ onToast }) {
         {/* Main Question Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Aside Filters (Left) */}
-          <ScrollReveal animation="fade-up" delay={80} className="lg:col-span-4 glass-card rounded-2xl p-6 border border-slate-200 shadow-sm space-y-5 bg-[#F8F9FC]">
+          <ScrollReveal animation="fade-up" delay={80} className="lg:col-span-4 glass-card rounded-2xl p-6 border border-purple-100 shadow-sm space-y-5 bg-gradient-to-br from-purple-50/70 via-white to-amber-50/40 lg:sticky lg:top-20 self-start">
             <div className="flex items-center justify-between pb-4 border-b border-slate-200">
               <div className="flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4 text-purple-700" />

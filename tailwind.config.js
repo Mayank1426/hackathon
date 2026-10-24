@@ -42,6 +42,8 @@ export default {
         'marquee': 'marquee 25s linear infinite',
         'float': 'float 6s ease-in-out infinite',
         'glow': 'glow 4s ease-in-out infinite alternate',
+        'spin-slow': 'spin 8s linear infinite',
+        'bounce-soft': 'bounce 2.5s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
@@ -62,6 +64,8 @@ export default {
         'purple-glow': '0 0 30px -5px rgba(121, 40, 202, 0.45)',
         'card': '0 10px 30px -10px rgba(0, 0, 0, 0.5)',
         'card-hover': '0 20px 40px -15px rgba(0, 0, 0, 0.7)',
+        'neon-yellow': '0 0 20px rgba(255, 216, 61, 0.6), 0 0 40px rgba(255, 216, 61, 0.3)',
+        'neon-purple': '0 0 20px rgba(121, 40, 202, 0.6), 0 0 40px rgba(121, 40, 202, 0.3)',
       }
     },
   },

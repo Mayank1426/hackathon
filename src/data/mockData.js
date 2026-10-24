@@ -35,6 +35,13 @@ export const prepBundles = [
     price: '₹199',
     hiringRoles: ['TCS Digital ₹7–7.3L', 'TCS Prime'],
     difficulty: { easy: 810, medium: 690, hard: 340 }
+  },
+  {
+    name: 'DIIPT Aptitude & Tech Pack',
+    questions: '180 questions',
+    price: '₹149',
+    hiringRoles: ['DIIPT Institute Selection', 'Campus Tech Round'],
+    difficulty: { easy: 90, medium: 70, hard: 20 }
   }
 ];
 
@@ -50,7 +57,7 @@ export const exploreCards = [
     badge: '48+ Companies',
     accentColor: 'purple',
     coreBrand: 'TCS',
-    chips: ['Cognizant', 'Wipro', 'Infosys', 'Accenture']
+    chips: ['Cognizant', 'DIIPT', 'Wipro', 'Infosys', 'Accenture']
   },
   {
     id: 'exp-2',
@@ -220,6 +227,26 @@ export const questionsData = [
     sampleInput: 'platform_len = 160m, t_platform = 18s, t_pole = 10s',
     expectedOutput: '72 km/h',
     explanation: 'Train covers its own length in 10s, and its own length + 160m in 18s. So it covers 160m in 8s = 20 m/s = 72 km/h.'
+  },
+  {
+    id: 6,
+    title: 'DIIPT Aptitude: Modular Arithmetic & Sequence Pattern Analysis',
+    company: 'DIIPT Tech & Aptitude',
+    companyType: 'Product-based',
+    module: 'Aptitude',
+    language: 'Python',
+    salary: '7–12 LPA',
+    salaryBand: '7–12 LPA',
+    difficulty: 'Medium',
+    recency: 'Last 30 days',
+    tags: ['DIIPT', 'Number Theory', 'Aptitude Core'],
+    description: 'Calculate the remainder when 7^105 is divided by 10 and determine the nth sequence term.',
+    starterCode: {
+      python: `def diipt_modular(base, exponent, modulus):\n    # Fast modular exponentiation for competitive aptitude\n    return pow(base, exponent, modulus)\n\nprint("DIIPT Unit Digit:", diipt_modular(7, 105, 10))`
+    },
+    sampleInput: 'base = 7, exp = 105, mod = 10',
+    expectedOutput: 'DIIPT Unit Digit: 7',
+    explanation: 'Powers of 7 follow cyclicity of 4: 7, 9, 3, 1. 105 % 4 = 1, hence remainder is 7.'
   }
 ];
 

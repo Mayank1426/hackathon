@@ -64,7 +64,7 @@ export default function MindEverywhere({ onToast }) {
   };
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 bg-white relative">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 bg-white/75 backdrop-blur-sm relative" id="mind">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <ScrollReveal animation="fade-up" className="text-center space-y-4 mb-12">
           <div className="inline-flex items-center gap-2 text-xs font-mono font-bold text-amber-600 uppercase tracking-widest px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
@@ -90,10 +90,10 @@ export default function MindEverywhere({ onToast }) {
               <button
                 key={item.id}
                 onClick={() => handleSelectThought(item)}
-                className={`px-5 py-3 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 border cursor-pointer select-none ${
+                className={`px-5 py-3 rounded-full text-xs sm:text-sm font-semibold transition-all duration-200 border cursor-pointer select-none kinetic-underline ${
                   isSelected
-                    ? 'bg-dk-purple text-white border-purple-700 shadow-md scale-105'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-700 hover:border-slate-300 shadow-xs'
+                    ? 'bg-dk-purple text-white border-purple-700 shadow-lg scale-105 glow-text-purple'
+                    : 'bg-white hover:bg-purple-50 border-slate-200 text-slate-700 hover:border-purple-300 shadow-sm hover:-translate-y-0.5'
                 }`}
               >
                 {item.text}
@@ -104,13 +104,13 @@ export default function MindEverywhere({ onToast }) {
 
         {/* Dynamic Solution Card */}
         <ScrollReveal animation="fade-up" delay={150}>
-          <div className="glass-card rounded-2xl p-6 sm:p-8 border-2 border-purple-500 shadow-lg bg-gradient-to-br from-white via-purple-50/20 to-amber-50/30 max-w-3xl mx-auto space-y-4 relative">
+          <div className="glass-card card-3d rounded-2xl p-6 sm:p-8 border-2 border-purple-500 shadow-xl bg-gradient-to-br from-white via-purple-50/30 to-amber-50/40 max-w-3xl mx-auto space-y-4 relative">
             <div className="flex items-center justify-between border-b border-slate-200/80 pb-3">
               <span className="text-[11px] font-mono font-bold text-amber-700 uppercase tracking-widest flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 fill-amber-500" />
                 WANT A SOLUTION?
               </span>
-              <span className="text-xs font-mono font-bold text-purple-700 bg-purple-100 px-2.5 py-0.5 rounded-full">
+              <span className="text-xs font-mono font-bold text-purple-700 bg-purple-100 px-2.5 py-0.5 rounded-full badge-float">
                 HANDLING: "{activeThought.text}"
               </span>
             </div>
@@ -130,7 +130,7 @@ export default function MindEverywhere({ onToast }) {
             <div className="pt-2">
               <a
                 href="#destination"
-                className="inline-flex items-center gap-2 bg-dk-yellow hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-sm border border-amber-300 transition-all"
+                className="inline-flex items-center gap-2 bg-dk-yellow hover:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl shadow-sm border border-amber-300 transition-all hover:-translate-y-0.5 active:scale-95"
               >
                 Try the filters
                 <ArrowUpRight className="w-4 h-4" />

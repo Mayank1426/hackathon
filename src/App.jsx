@@ -21,12 +21,18 @@ import FinalCta from './components/FinalCta';
 import Footer from './components/Footer';
 import Toast from './components/Toast';
 import { LoginModal, ScholarshipModal, LevelBriefingModal } from './components/Modals';
+import ScrollProgressBar from './components/ScrollProgressBar';
+import PlacementCalculator from './components/PlacementCalculator';
+import CommandPalette from './components/CommandPalette';
+import FloatingNav from './components/FloatingNav';
+import AiChatbot from './components/AiChatbot';
 
 export default function App() {
   const [toastMessage, setToastMessage] = useState(null);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
   const [selectedPlanForScholarship, setSelectedPlanForScholarship] = useState(null);
   const [selectedLevelForBrief, setSelectedLevelForBrief] = useState(null);
+  const [cmdPaletteOpen, setCmdPaletteOpen] = useState(false);
 
   const showToast = (msg) => {
     setToastMessage(msg);
@@ -39,7 +45,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8F9FC] text-slate-900 flex flex-col font-sans selection:bg-dk-yellow selection:text-slate-900">
+    <div className="min-h-screen bg-transparent text-slate-900 flex flex-col font-sans selection:bg-dk-yellow selection:text-slate-900">
+      {/* Global Scroll Progress Bar at very top */}
+      <ScrollProgressBar />
+
       {/* Top Banner */}
       <AnnouncementBar />
 
@@ -47,6 +56,7 @@ export default function App() {
       <Navbar
         onOpenLogin={() => setLoginModalOpen(true)}
         onToast={showToast}
+        onOpenCommandPalette={() => setCmdPaletteOpen(true)}
       />
 
       <main className="flex-1">
@@ -64,6 +74,9 @@ export default function App() {
 
         {/* 4. Practice Destination Finder with Quick Targets & Surprise Me (PDF Page 4, 5, 6) */}
         <PracticeDestinationFinder onToast={showToast} />
+
+        {/* 4.5. Creative Interactive Placement Readiness Calculator */}
+        <PlacementCalculator onToast={showToast} />
 
         {/* 5. Company Brand Strip */}
         <CompanyStrip onSelectCompany={handleSelectCompanyFromStrip} />
@@ -139,6 +152,18 @@ export default function App() {
         message={toastMessage}
         onClose={() => setToastMessage(null)}
       />
+
+      {/* Command Palette (Ctrl+K) */}
+      <CommandPalette
+        isOpen={cmdPaletteOpen}
+        onClose={() => setCmdPaletteOpen(false)}
+      />
+
+      {/* Floating Nav HUD */}
+      <FloatingNav />
+
+      {/* Interactive AI Chatbot Agent (Floating Modal) */}
+      <AiChatbot />
     </div>
   );
 }

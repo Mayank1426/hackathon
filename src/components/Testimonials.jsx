@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { testimonialsData } from '../data/mockData';
 import { ArrowLeft, ArrowRight, Quote } from 'lucide-react';
 import ScrollReveal from './ScrollReveal';
@@ -18,9 +18,17 @@ export default function Testimonials({ onToast }) {
     setCurrentIndex(nextIdx);
     onToast(`Showing testimonial ${nextIdx + 1} of ${testimonialsData.length}`);
   };
+  const [isPaused, setIsPaused] = useState(false);
+  useEffect(() => {
+    if (isPaused) return;
+    const timer = setInterval(() => {
+      setCurrentIndex(i => (i + 1) % testimonialsData.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, [isPaused]);
 
   return (
-    <section className="py-16 md:py-24 border-b border-slate-200 relative bg-white">
+    <section className="py-16 md:py-24 border-b border-purple-100/60 relative bg-white/70 backdrop-blur-sm" onMouseEnter={() => setIsPaused(true)} onMouseLeave={() => setIsPaused(false)}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Heading & Controls */}
